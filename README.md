@@ -97,3 +97,103 @@ python manage.py migrate
 ```
 python manage.py runserver
 ```
+## Django models
+### Objects
+So what is an object? It is a collection of properties and actions. It sounds weird, but we will give you an example.
+```
+Cat
+--------
+color
+age
+mood
+owner
+purr()
+scratch()
+feed(cat_food)
+
+CatFood
+--------
+taste
+```
+
+So basically the idea is to describe real things in code with properties (called object properties) and actions (called methods).
+
+
+In our case:
+```
+Post
+--------
+title
+text
+author
+created_date
+published_date
+```
+### Django model
+A model in Django is a special kind of object - it is saved in the database.
+You can think of a model in the database as a spreadsheet with columns (fields) and rows (data).
+
+### Creating an application
+```
+python manage.py startapp blog
+```
+The current blog directory:
+```
+djangogirls
+├── blog
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── migrations
+│   │   └── __init__.py
+│   ├── models.py
+│   ├── tests.py
+│   └── views.py
+├── db.sqlite3
+├── manage.py
+└── mysite
+    ├── __init__.py
+    ├── settings.py
+    ├── urls.py
+    └── wsgi.py
+```
+
+Tell Django to use this application:
+(change the file mysite/settings.py)
+```
+INSTALLED_APPS = (
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'blog',
+)
+
+```
+
+
+### Creating a blog post model
+Change the blog/models.py file to this:
+```
+from django.db import models
+from django.utils import timezone
+
+
+class Post(models.Model):
+    author = models.ForeignKey('auth.User')
+    title = models.CharField(max_length=200)
+    text = models.TextField()
+    created_date = models.DateTimeField(
+            default=timezone.now)
+    published_date = models.DateTimeField(
+            blank=True, null=True)
+
+    def publish(self):
+        self.published_date = timezone.now()
+        self.save()
+
+    def __str__(self):
+        return self.title
+```
