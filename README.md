@@ -14,6 +14,8 @@ Once you've finished the tutorial, you will have a simple, working web applicati
 * Install Django: pip install django~=1.9.0
 * Install gedit: http://ftp.gnome.org/pub/GNOME/binaries/win64/gedit/gedit-x86_64-3.20.1.msi
 * Create a python anywhere account: https://www.pythonanywhere.com
+
+
 ## How the Internet works
 We could compare Internet to a mailing system:
 * letters = data packets
@@ -34,7 +36,7 @@ We could compare Internet to a mailing system:
 | del               | rm                       | delete a directory/file | del c:\test\test.txt                      |
 
 
-## Introduction to the python
+## Introduction to  python
 * open python console: write python3 in the cmd
     * Strings: "", '', upper, len
     * Lists: [], len,sort,
@@ -64,7 +66,7 @@ for i in range(1, 6):
     print(i)
 ```
 ## What is Django
-
+Django (/ˈdʒæŋɡoʊ/ jang-goh) is a free and open source web application framework, written in Python. A web framework is a set of components that helps you to develop websites faster and easier.
 
 
 
