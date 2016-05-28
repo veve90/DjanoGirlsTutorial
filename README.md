@@ -88,5 +88,12 @@ djangogirls
 * manage.py : is a script that helps with management of the site. With it we will be able to start a web server on our computer without installing anything else, amongst other things.
 * settings.py file :contains the configuration of your website.
 * urls.py file :contains a list of patterns used by urlresolver.
-
-
+ 
+To create a database for our blog, let's run the following in the console:
+```
+python manage.py migrate
+```
+ In the console, we can start the web server by running
+```
+python manage.py runserver
+```
