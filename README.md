@@ -228,3 +228,15 @@ from .models import Post
 
 admin.site.register(Post)
 ```
+Run the server ``` python manage.py runserver ``` and go to ```http://127.0.0.1:8000/admin```
+Since we hanven't created a user we can't authentificate. Let's create it!
+```
+python manage.py createsuperuser
+```
+Use for example as a password: django123
+
+Run agin the server ``` python manage.py runserver ``` and go to ```http://127.0.0.1:8000/admin```
+and create 6 posts, 3 with the publish date set.
+
+## Deploy!
+Until now, your website was only available on your computer. Now you will learn how to deploy it! Deploying is the process of publishing your application on the Internet so people can finally go and see your app :).
