@@ -220,3 +220,11 @@ Django prepared for us a migration file that we have to apply now to our databas
 ```
 python manage.py migrate blog
 ```
+## Django admin
+Change the blog/admin.py file to:
+```
+from django.contrib import admin
+from .models import Post
+
+admin.site.register(Post)
+```
