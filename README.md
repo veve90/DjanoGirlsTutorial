@@ -270,4 +270,31 @@ In order to create this gitignore file:
 * Create the text file gitignore.txt
 * Open it in a text editor and add your rules, then save and close
 * Hold SHIFT, right click the folder you're in, then select Open command window here
-* Then rename the file in the command line, with ren gitignore.txt .gitignore
+* Then rename the file in the command line, with ```ren gitignore.txt .gitignore```
+ 
+
+```
+ git status
+ git add --all .
+ git commit -m "My Django Girls app, first commit"
+ git remote add origin https://github.com/veve90/DjanoGirlsTutorial.git
+ git push -u origin master
+ 
+```
+
+
+### Setting up our blog on PythonAnywhere
+We will put our code from girt to pythonanywhere
+```
+git clone https://github.com/veve90/DjanoGirlsTutorial.git
+tree DjanoGirlsTutorial
+```
+
+### Creating a virtualenv on PythonAnywhere
+```
+cd DjanoGirlsTutorial
+virtualenv --python=python3.4 myvenv
+source myvenv/bin/activate
+pip install django~=1.9.0
+
+```
