@@ -68,6 +68,25 @@ for i in range(1, 6):
 ## What is Django
 Django (/ˈdʒæŋɡoʊ/ jang-goh) is a free and open source web application framework, written in Python. A web framework is a set of components that helps you to develop websites faster and easier.
 
+### What happens when someone requests a website from your server?
+When a request comes to a web server it's passed to Django which tries to figure out what actually is requested. It takes a webpage address first and tries to figure out what to do. This part is done by Django's urlresolver .It is not very smart - it takes a list of patterns and tries to match the URL. Django checks patterns from top to the bottom and if something is matched then Django passes the request to the associated function (which is called view).
 
+## Your first Django project!
+```
+django-admin startproject mysite .
+```
+* django-admin.py : is a script that will create the directories and files for you. You should now have a directory structure which looks like this:
+```
+djangogirls
+├───manage.py
+└───mysite
+        settings.py
+        urls.py
+        wsgi.py
+        __init__.py
+```
+* manage.py : is a script that helps with management of the site. With it we will be able to start a web server on our computer without installing anything else, amongst other things.
+* settings.py file :contains the configuration of your website.
+* urls.py file :contains a list of patterns used by urlresolver.
 
 
