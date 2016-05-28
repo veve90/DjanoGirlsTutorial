@@ -1,4 +1,4 @@
-# DjanoGirlsTutorial
+# DjangoGirlsTutorial
 I will participate to the Djsngo girls Lyon as a mentor. Therefore I will complete the Django girls tutorial before this event (:D).
 This are my notes for the Djano girls Tutorial: http://tutorial.djangogirls.org/en/
 
@@ -297,4 +297,36 @@ virtualenv --python=python3.4 myvenv
 source myvenv/bin/activate
 pip install django~=1.9.0
 
+```
+### Creating the database on PythonAnywhere
+```
+python manage.py migrate
+python manage.py createsuperuser
+```
+
+### Publishing our blog as a web app
+Click back to the PythonAnywhere dashboard by clicking on its logo, and go click on the Web tab. Finally, hit Add a new web app.
+
+After confirming your domain name, choose manual configuration (NB not the "Django" option) in the dialog. Next choose Python 3.4, and click Next to finish the wizard.
+#### Setting the virtualenv
+In the "Virtualenv" section, click the red text that says "Enter the path to a virtualenv", and enter: ```/home/<your-PythonAnywhere-username>/my-first-blog/myvenv/```. Click the blue box with the check mark to save the path before moving on.
+
+
+#### Configuring the WSGI file
+Django works using the "WSGI protocol", a standard for serving websites using Python, which PythonAnywhere supports. The way we configure PythonAnywhere to recognise our Django blog is by editing a WSGI configuration file.
+
+Put this as a WSGI file:
+```
+import os
+import sys
+
+path = '/home/<your-PythonAnywhere-username>/my-first-blog'  # use your own PythonAnywhere username here
+if path not in sys.path:
+    sys.path.append(path)
+
+os.environ['DJANGO_SETTINGS_MODULE'] = 'mysite.settings'
+
+from django.core.wsgi import get_wsgi_application
+from django.contrib.staticfiles.handlers import StaticFilesHandler
+application = StaticFilesHandler(get_wsgi_application())
 ```
