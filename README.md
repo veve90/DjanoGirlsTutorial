@@ -9,7 +9,7 @@ Once you've finished the tutorial, you will have a simple, working web applicati
 * Install Python: ```https://www.python.org/ftp/python/3.4.3/python-3.4.3.amd64.msi```
 * Set up virtualenv and install Django: 
     * create a folder: ```D:\Users\agherman\Documents\djangogirls```
-    * go to this folder in cmd and do ```C:\Python34\python -m venv myvenv```
+    * go to this folder  ```cd /d d: ``` in cmd and do ```C:\Python34\python -m venv myvenv```
     * start the virtual env: ``` myvenv\Scripts\activate```
 * Install Django: ```pip install django~=1.9.0```
 * Install gedit: ```http://ftp.gnome.org/pub/GNOME/binaries/win64/gedit/gedit-x86_64-3.20.1.msi```
@@ -240,3 +240,34 @@ and create 6 posts, 3 with the publish date set.
 
 ## Deploy!
 Until now, your website was only available on your computer. Now you will learn how to deploy it! Deploying is the process of publishing your application on the Internet so people can finally go and see your app :).
+
+
+As you learned, a website has to be located on a server. There are a lot of server providers available on the internet. We will use one that has a relatively simple deployment process: PythonAnywhere. PythonAnywhere is free for small applications that don't have too many visitors so it'll definitely be enough for you now.
+
+The other external service we'll be using is GitHub, which is a code hosting service. There are others out there, but almost all programmers have a GitHub account these days, and now so will you!
+
+### Git
+```
+$ cd /d d:
+$ cd Users\agherman\Documents\djangogirls
+
+$ git init
+Initialized empty Git repository in ~/djangogirls/.git/
+$ git config --global user.name "Your Name"
+$ git config --global user.email you@example.com
+```
+
+Git will track changes to all the files and folders in this directory, but there are some files we want it to ignore. We do this by creating a file called .gitignore in the base directory. Open up your editor and create a new file with the following contents:
+```
+*.pyc
+__pycache__
+myvenv
+db.sqlite3
+/static
+.DS_Store
+```
+In order to create this gitignore file: 
+* Create the text file gitignore.txt
+* Open it in a text editor and add your rules, then save and close
+* Hold SHIFT, right click the folder you're in, then select Open command window here
+* Then rename the file in the command line, with ren gitignore.txt .gitignore
