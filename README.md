@@ -469,3 +469,60 @@ Here are some explications:
 $ git pull
 [...]
    ```
+## Django ORM and QuerySets
+In this chapter you'll learn how Django connects to the database and stores data in it. Let's dive in!
+
+What is a QuerySet?
+
+A QuerySet is, in essence, a list of objects of a given Model. QuerySet allows you to read the data from the database, filter it and order it.
+
+Open the Django commandline:
+```
+   (myvenv) ~/djangogirls$ python manage.py shell
+```
+
+Get All objects:
+```
+>>> from blog.models import Post
+>>> Post.objects.all()
+Traceback (most recent call last):
+      File "<console>", line 1, in <module>
+NameError: name 'Post' is not defined
+```
+
+Create Object:
+```
+>>> from django.contrib.auth.models import User
+>>> Post.objects.create(author=me, title='Sample title', text='Test')
+>>> User.objects.all()
+me = User.objects.get(username='ola')
+>>> Post.objects.create(author=me, title='Sample title', text='Test')
+
+```
+Filter  Object:
+```
+>>> Post.objects.filter(author=me)
+>>> Post.objects.filter(title__contains='title')
+>>> from django.utils import timezone
+>>> Post.objects.filter(published_date__lte=timezone.now())
+[]
+>>> post = Post.objects.get(title="Sample title")
+>>> post.publish()
+>>> Post.objects.filter(published_date__lte=timezone.now())
+[<Post: Sample title>]
+```
+
+Ordering  Object:
+```
+>>> Post.objects.order_by('created_date')
+>>> Post.objects.order_by('-created_date')
+```
+
+
+
+Chaining querySets  :
+```
+>>> Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+>>> exit()
+$
+```
