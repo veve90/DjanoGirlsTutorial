@@ -330,3 +330,47 @@ from django.core.wsgi import get_wsgi_application
 from django.contrib.staticfiles.handlers import StaticFilesHandler
 application = StaticFilesHandler(get_wsgi_application())
 ```
+## Django URLs
+
+Every page on the Internet needs its own URL. This way your application knows what it should show to a user who opens a URL. In Django we use something called URLconf (URL configuration). *URLconf* is a set of patterns that Django will try to match with the received URL to find the correct view.
+
+* check the ```mysite/urls.py``` script for the URL configurations
+
+### Regex
+* ^ for beginning of the text
+* $ for end of text
+* \d for a digit
+* + to indicate that the previous item should be repeated at least once
+* () to capture part of the pattern
+
+
+
+We also want to keep the mysite/urls.py file clean, so we will import urls from our blog application to the main mysite/urls.py file.
+
+Go ahead, add a line that will import blog.urls into the main url (''). Note that we are using the include function here so you will need to add that to the import on the first line of the file.
+
+Your mysite/urls.py file should now look like this:
+ ```
+from django.conf.urls import include, url
+from django.contrib import admin
+
+urlpatterns = [
+    url(r'^admin/', admin.site.urls),
+    url(r'', include('blog.urls')),
+]
+ ```
+ 
+ 
+ Create a new  ```blog/urls.py ``` empty file. All right! Add these two first lines:
+ ```
+from django.conf.urls import url
+from . import views
+ ```
+Here we're importing Django's function url and all of our views from blog application (we don't have any yet, but we will get to that in a minute!)
+
+After that, we can add our first URL pattern:
+ ```
+urlpatterns = [
+    url(r'^$', views.post_list, name='post_list'),
+]
+ ```
